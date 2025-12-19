@@ -79,7 +79,7 @@ def find_reference_audio(reference_dir, subtitle_id, audio_prefix='segment'):
 def parse_args():
     """Parse command line arguments"""
     parser = argparse.ArgumentParser(
-        description='Voice cloning with MeloTTS and OpenVoice - Single or Batch mode',
+        description='Voice cloning with - Single or Batch mode',
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 SINGLE MODE Examples:
@@ -246,7 +246,7 @@ def process_batch_mode(args, model):
             output_filename = f"{args.output_prefix}_{subtitle_id:03d}.wav"
             output_path = os.path.join(args.output, output_filename)
 
-            wav = model.generate(args.text, audio_prompt_path=ref_audio)
+            wav = model.generate(subtitle, audio_prompt_path=ref_audio)
             ta.save(output_path, wav, model.sr)
 
             print(f" ✓ Saved : {output_filename}")
