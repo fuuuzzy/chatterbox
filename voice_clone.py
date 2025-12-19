@@ -246,7 +246,7 @@ def process_batch_mode(args, model):
             output_filename = f"{args.output_prefix}_{subtitle_id:03d}.wav"
             output_path = os.path.join(args.output, output_filename)
 
-            wav = model.generate(args.text, audio_prompt_path=args.reference)
+            wav = model.generate(args.text, audio_prompt_path=ref_audio)
             ta.save(output_path, wav, model.sr)
 
             print(f" ✓ Saved : {output_filename}")
