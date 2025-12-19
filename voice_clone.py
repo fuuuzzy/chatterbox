@@ -246,7 +246,6 @@ def process_batch_mode(args, model):
             output_filename = f"{args.output_prefix}_{subtitle_id:03d}.wav"
             output_path = os.path.join(args.output, output_filename)
 
-            model = ChatterboxTTS.from_local(device=device, ckpt_dir=args.checkpoint)
             wav = model.generate(args.text, audio_prompt_path=args.reference)
             ta.save(output_path, wav, model.sr)
 
